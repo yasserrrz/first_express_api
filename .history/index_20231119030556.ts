@@ -1,0 +1,20 @@
+import express from 'express';
+
+const app = express();
+const port = 3000;
+
+// Middleware function to log the timestamp of each request
+app.use((req :any, res: any, next : any) => {
+    console.log(`[${new Date().toLocaleString()}] ${req.method} ${req.url}`);
+    next();
+});
+
+// Route handling
+app.get('/', (req :any, res: any,) => {
+    res.send('Hello, Express with TypeScript!');
+});
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
